@@ -1,5 +1,5 @@
 .header {
-  height: 11rem;
+  height: 3rem;
   border-bottom: 3px solid #ed1a25;
   display: flex;
   justify-content: space-between;
@@ -9,9 +9,9 @@
 }
 
 .header img {
-  width: 600px;
-  padding: 100px;
-  margin-bottom: 10px;
+  width: 200px;
+  padding: 10px;
+  margin-bottom: 30px;
 }
 
 .header .right-header {

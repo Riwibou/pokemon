@@ -1,4 +1,11 @@
 /*** items ***/
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajustez si nécessaire pour occuper toute la hauteur de la vue */
+}
+
 .wrapper {
   display: grid;
   grid-gap: 1.1vmin;
@@ -9,12 +16,13 @@
   margin: 2vmin;
 }
 
+
 .item {
   width: auto;
   min-height: 0;
   position: relative;
   overflow: hidden;
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
 }
 

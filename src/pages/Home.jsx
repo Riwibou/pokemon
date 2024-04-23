@@ -11,13 +11,47 @@ const Home = () => {
     <>
       <div className="home-container">
         <div className="wrapper">
-          <div className="item"><img src={image1} alt="" /></div>
-          <div className="item"><img src={image2} alt="" /></div>
-          <div className="item"><img src={image3} alt="" /></div>
-          <div className="item"><img src={image4} alt="" /></div>
-          <div className="item"><img src={image5} alt="" /></div>
-          <div className="item"><img src={image6} alt="" /></div>
-          <div className="item"><img src={image7} alt="" /></div>
+          <div className="item"><img style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }} src={image1} alt="" /></div>
+
+          <div className="item"><img style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }} src={image2} alt="" /></div>
+
+          <div className="item"><img style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }} src={image3} alt="" /></div>
+
+          <div className="item"><img style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }} src={image4} alt="" /></div>
+
+          <div className="item"><img style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }} src={image5} alt="" /></div>
+
+          <div className="item"><img style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }} src={image6} alt="" /></div>
+
+          <div className="item"><img style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }} src={image7} alt="" /></div>
         </div>
       </div>
       <h1>Salut à toi jeune dresseur</h1>
@@ -26,5 +60,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
