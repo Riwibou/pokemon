@@ -1,0 +1,24 @@
+.header {
+  height: 11rem;
+  border-bottom: 3px solid #ed1a25;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.header img {
+  width: 600px;
+  padding: 100px;
+  margin-bottom: 10px;
+}
+
+.header .right-header {
+  display: flex;
+  gap: 15px;
+}
+
+.header .right-header a {
+  font-size: 1.4rem;
+}
