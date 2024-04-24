@@ -66,8 +66,6 @@ const Home = () => {
             <div className="home-middle ">
               <Link className="cta-link" to={"/pokemons"}>Pokemons</Link>
               <Link className="cta-link" to={"/types"}>Types</Link>
-            <h1>Welcome To You</h1>
-            <h1>Young Trainer!</h1>
             </div>
           </div>
       </div>
