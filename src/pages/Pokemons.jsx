@@ -39,6 +39,9 @@ const Pokemons = () => {
           const url = pokemon.url.split("/")[6];
           return (
             <Link to={`/pokemon/${pokemon.name}`} key={index} className="card">
+              <div className="">
+
+              </div>
               <div className="card-header">{pokemon.name}</div>
               <div className="card-body">
                 <img

@@ -15,7 +15,6 @@
 }
 
 /* style pour le header et aussi pour la home */
-
 a {
   font-weight: 500;
   color: #646cff;
@@ -31,23 +30,30 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  margin: Opx;
 
 }
 
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   text-align: center;
-  margin: 0 auto;
-  padding: 2rem;
+  /* margin: 0 auto;
+  padding: 2rem; */
 }
 
 
 /* pokemons page cards */
 
 .pokemons-div {
-  /* margin: 0 auto;
-  padding: 2rem; */
+  margin: 0 auto;
+  padding: 2rem;
 }
+
+/* @media (min-width: 1500px) {
+  .pokemons-div {
+    max-width: 1500px;
+  }
+} */
 
 .pokemons-title {
   margin-bottom: 30px;
@@ -56,15 +62,15 @@ body {
 .main-div {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .card {
   flex: 0 0 calc(18%);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border: 1px solid #d389f8;
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 320px;
   padding: 2em;
 }
@@ -87,8 +93,8 @@ body {
 }
 
 .card-body img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 243px;
 }
 .card-footer {
   display: flex;

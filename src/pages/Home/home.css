@@ -1,4 +1,5 @@
 /* Home */
+
 #home-content {
   margin: 0;
   padding: 0;
@@ -25,8 +26,8 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  height: 99vh;
+  width: 99vw;
 }
 
 /* Positionne le logo Pokémon au centre */
@@ -59,9 +60,8 @@ h1 {
   grid-gap: 1.1vmin;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;
-  width: calc(100% - 2vmin); /* Ajuste la largeur pour laisser un espace */
-  height: calc(100% - 4vmin); /* Ajuste la hauteur pour laisser un espace */
-  margin: 2vmin;
+  width: 100%;
+  height: 100%;
 }
 
 .item {
