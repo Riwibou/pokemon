@@ -1,0 +1,125 @@
+/* Home */
+#home-content {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.logo-home {
+  width: 200px;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+/* Styles to display the logo and links */
+
+.home-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Positionne le logo Pokémon au centre */
+.logo-home {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+/* Positionne les liens en dessous du logo Pokémon */
+.home-middle {
+  position: absolute;
+  top: calc(50% + 30px); /* Ajustez la valeur en fonction de la taille du logo */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2; /* Assurez-vous que les liens sont au-dessus des autres éléments */
+}
+
+
+/* -------------------------------------------------------------------------------- */
+
+
+
+/*** items - code for the display of the images in background  ***/
+
+.wrapper {
+  display: grid;
+  grid-gap: 1.1vmin;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  width: calc(100% - 2vmin); /* Ajuste la largeur pour laisser un espace */
+  height: calc(100% - 4vmin); /* Ajuste la hauteur pour laisser un espace */
+  margin: 2vmin;
+}
+
+.item {
+  width: auto;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.item:nth-child(1) {
+  grid-column: 1 / span 2;
+  grid-row: 1 / 20;
+  clip-path: polygon(0 0, 80% 0, 73% 82%, 0 95%);
+  background-image: url('../assets/image1.png');
+}
+
+.item:nth-child(2) {
+  grid-column: 2 / span 2;
+  grid-row: 1 / 20;
+  clip-path: polygon(32% 0, 100% 0, 100% 68%, 25% 81%);
+  background-image: url('../assets/image2.png');
+}
+
+.item:nth-child(3) {
+  grid-column: 1 / span 1;
+  grid-row: 17 / 50;
+  clip-path: polygon(0 8%, 0% 87%, 87% 88%, 98% 3%);
+  background-image: url('../assets/image3.png');
+}
+
+.item:nth-child(4) {
+  grid-column: 2 / span 1;
+  grid-row: 15 / 47;
+  clip-path: polygon(14% 9.5%, 4% 97.5%, 99% 99%, 99% 4.5%);
+  margin-left: -15%;
+  background-image: url('../assets/image4.png');
+}
+
+.item:nth-child(5) {
+  grid-column: 3 / span 1;
+  grid-row: 13 / 48;
+  clip-path: polygon(15% 9.5%, 15% 96.25%, 100% 97.5%, 100% 5%);
+  margin-left: -15%;
+  background-image: url('../assets/image5.png');
+}
+
+.item:nth-child(6) {
+  grid-column: 1 / span 2;
+  grid-row: 70 / 45;
+  clip-path: polygon(0% 6%, 75% 8.5%, 80% 100%, 0 100%);
+  background-image: url('../assets/image6.png');
+}
+
+.item:nth-child(7) {
+  grid-column: 2 / span 2;
+  grid-row: 70 / 45;
+  clip-path: polygon(27% 9%, 100% 12%, 100% 100%, 32% 100%);
+  background-image: url('../assets/image7.png');
+}

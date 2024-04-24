@@ -31,7 +31,7 @@ const Pokemons = () => {
   return loading ? (
     <div>Chargement</div>
   ) : (
-    <div>
+    <div className="pokemons-div">
       <h1 className="pokemons-title" >Pokemons</h1>
 
       <div className="main-div">
