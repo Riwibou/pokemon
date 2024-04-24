@@ -64,9 +64,10 @@ const Home = () => {
               <img className="logo-home" src={logo} alt="" />
             </Link>
             <div className="home-middle ">
-              <Link to={"/pokemons"}>Pokemons</Link>
-              <Link to={"/types"}>Types</Link>
-            <h1>Salut à toi jeune dresseur</h1>
+              <Link className="cta-link" to={"/pokemons"}>Pokemons</Link>
+              <Link className="cta-link" to={"/types"}>Types</Link>
+            <h1>Welcome To You</h1>
+            <h1>Young Trainer!</h1>
             </div>
           </div>
       </div>

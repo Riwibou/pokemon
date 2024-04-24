@@ -29,7 +29,22 @@ const Pokemons = () => {
   }, []);
 
   return loading ? (
-    <div>Chargement</div>
+    <div className="loader">
+      <p>So much pokemons and types to load, please wait few seconds ... </p>
+      {/* <iframe
+        src="https://gifer.com/embed/4vzt"
+        width="200"
+        height="70"
+        style={{
+          width: "200px",
+          height: "300px",
+          transform: "rotate(-90deg)"
+        }}
+        frameBorder="0"
+        allowFullScreen
+        title="GIF from Gifer"
+      ></iframe> */}
+    </div>
   ) : (
     <div className="pokemons-div">
       <h1 className="pokemons-title" >Pokemons</h1>
