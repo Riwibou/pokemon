@@ -22,18 +22,21 @@ const Home = () => {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
+                objectPosition: " 50%"
               }} src={image1} alt="" /></div>
 
               <div className="item"><img style={{
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
+                objectPosition:"30% 20%"
               }} src={image2} alt="" /></div>
 
               <div className="item"><img style={{
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
+                objectPosition:"10% 0%"
               }} src={image3} alt="" /></div>
 
               <div className="item"><img style={{
@@ -45,13 +48,16 @@ const Home = () => {
               <div className="item"><img style={{
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
+                objectFit: "none",
+                objectPosition: "-50% 30%"
+
               }} src={image5} alt="" /></div>
 
               <div className="item"><img style={{
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
+                objectPosition: "-50% 30%"
               }} src={image6} alt="" /></div>
 
               <div className="item"><img style={{
@@ -63,7 +69,7 @@ const Home = () => {
             <Link to={"/"}>
               <img className="logo-home" src={logo} alt="" />
             </Link>
-            <div className="home-middle ">
+            <div className="home-links ">
               <Link className="cta-link" to={"/pokemons"}>Pokemons</Link>
               <Link className="cta-link" to={"/types"}>Types</Link>
             </div>

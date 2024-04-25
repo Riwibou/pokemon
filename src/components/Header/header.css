@@ -23,3 +23,26 @@
 .header .right-header a {
   font-size: 1.4rem;
 }
+
+.right-header a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+  margin: 40px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFCC00;
+  background-color: #2E68B3;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  width: 130px
+}
+
+.right-header a:hover {
+  background-color: #15255A;
+  color: #C7A001; 
+}

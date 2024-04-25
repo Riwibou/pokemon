@@ -5,14 +5,14 @@
   padding: 0;
 }
 
-h1 {
+/* h1 {
   font-size: 3.2em;
   line-height: 1.1;
   text-align: center;
   margin-top: auto;
   margin-bottom: auto;
   color: #d089f6;
-}
+} */
 
 .logo-home {
   width: 500px;
@@ -34,12 +34,23 @@ h1 {
 
   background:
   radial-gradient(circle at center,
-  rgba(0, 0, 0, 0.83) 0%,
-  rgba(0, 0, 0, 0.5) 50%,
+  rgba(0, 0, 0, 0.65) 0%,
+  rgba(0, 0, 0, 0.35) 50%,
   rgba(0, 0, 0, 0.1) 100%);
 
   pointer-events: none;
   z-index: 1;
+}
+
+/* Positionne les liens en dessous du logo Pokémon */
+.home-links {
+  position: absolute;
+  top: calc(50% + 30px); /* Ajustez la valeur en fonction de la taille du logo */
+  left: 51%;
+  transform: translateX(-50%);
+  z-index: 2; /* Assurez-vous que les liens sont au-dessus des autres éléments */
+  width: 550px;
+  height: 120px;
 }
 
 /* Styles to display the logo and links */
@@ -54,25 +65,27 @@ h1 {
 }
 
 .cta-link {
-  display: inline-block;
-  padding: 10px 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
   margin: 30px;
-  margin-top: 30px;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  color: white;
-  background-color: #9141CB;
+  color: #FFCC00;
+  background-color: #2E68B3;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease; /* Ajout d'une transition pour un effet de survol */
+  transition: background-color 0.15s ease; /* Ajout d'une transition pour un effet de survol */
+  width: 130px;
 }
 
 .cta-link:hover {
-  background-color: rgb(90, 50, 146); /* Changement de couleur de fond au survol */
-  color: white;
+  background-color: #15255A; /* Changement de couleur de fond au survol */
+  color: #C7A001;
 }
 
 
@@ -86,14 +99,7 @@ h1 {
   z-index: 3;
 }
 
-/* Positionne les liens en dessous du logo Pokémon */
-.home-middle {
-  position: absolute;
-  top: calc(50% + 30px); /* Ajustez la valeur en fonction de la taille du logo */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2; /* Assurez-vous que les liens sont au-dessus des autres éléments */
-}
+
 
 
 /* -------------------------------------------------------------------------------- */

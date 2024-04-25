@@ -31,7 +31,7 @@ const Pokemons = () => {
   return loading ? (
     <div className="loader">
       <p>So much pokemons and types to load, please wait few seconds ... </p>
-      {/* <iframe
+      <iframe
         src="https://gifer.com/embed/4vzt"
         width="200"
         height="70"
@@ -43,7 +43,7 @@ const Pokemons = () => {
         frameBorder="0"
         allowFullScreen
         title="GIF from Gifer"
-      ></iframe> */}
+      ></iframe>
     </div>
   ) : (
     <div className="pokemons-div">
@@ -143,7 +143,7 @@ const PokemonTypes = ({ url }) => {
     <>
     <div className={`card-footer ${types.length === 1 ? 'single-type' : ''}`}>
       {types.map((type, index) => (
-        <span key={index} style={{ backgroundColor: getTypeColor(type) }}>{type} </span>
+        <span key={index} style={{ backgroundColor: getTypeColor(type), textShadow: "0 0 3px black" }}>{type} </span>
       ))}
     </div>
     </>
