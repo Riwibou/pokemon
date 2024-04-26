@@ -49,7 +49,7 @@ const Home = () => {
                 width: "100%",
                 height: "100%",
                 objectFit: "none",
-                objectPosition: "-50% 30%"
+                objectPosition: "50% 30%"
 
               }} src={image5} alt="" /></div>
 

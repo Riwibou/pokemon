@@ -15,10 +15,9 @@
 }
 
 /* style pour le header et aussi pour la home */
-/* a {
+a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  text-decoration: none;
 }
 
 a:hover {
@@ -144,7 +143,7 @@ h1 {
   width: 140px;
   height: 170px;
   margin: 35px 25px 0px;
-  border: 1px solid #1b5486;
+  border: 2px solid #1b5486;
   border-radius: 5px;
   padding: 20px;
 }
