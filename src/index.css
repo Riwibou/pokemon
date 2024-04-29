@@ -165,3 +165,32 @@ h1 {
 
 }
 
+/* Pokemon Page */
+
+.pokemon-infos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.poke-link-card {
+  text-decoration: none;
+  width: 700px;
+  margin: 0 auto;
+}
+
+.poke-img {
+  height: 300px;
+  width: 300px;
+  border: 2px solid #1b5486;
+}
+
+.poke-numbers ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.poke-numbers ul li {
+  text-decoration: none;
+}
