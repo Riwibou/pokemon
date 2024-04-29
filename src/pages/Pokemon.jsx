@@ -8,7 +8,8 @@ const PokemonDetails = ({ pokemonId }) => {
   const [speciesData, setSpeciesData] = useState(null);
   const [pokeEvolStory, setPokeEvolStory] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+  const [evolutions, setEvolutions] = useState([])
+  const evolutionsImages = []
 
   useEffect(() => {
     setLoading(true);
@@ -21,12 +22,21 @@ const PokemonDetails = ({ pokemonId }) => {
       .then((res) => res.json())
       .then((speciesData) => {
         setSpeciesData(speciesData);
-        return fetch(speciesData.evolution_chain.url);
       })
+      .then(() => fetch(speciesData.evolution_chain.url))
       .then((res) => res.json())
       .then((pokeEvolStory) => {
-        setPokeEvolStory(pokeEvolStory);
+        createEvolutions(pokeEvolStory.chain);
         setLoading(false);
+      })
+      .then((evolutions) => {
+        evolutions.forEach((evolution) => {
+            fetch(`https://pokeapi.co/api/v2/pokemon/${evolution}`)
+            .then((res) => res.json())
+            .then((data) => {
+              evolutionsImages.push(data.sprites.front_default);
+            });
+        });
       })
       .catch((error) => {
         console.error("Error fetching Pokemon details:", error);
@@ -34,19 +44,18 @@ const PokemonDetails = ({ pokemonId }) => {
       });
   }, [pokemonId]);
 
-  const displayEvolutions = (chain) => {
-    const evolutions = [];
 
-    const traverseChain = (chain) => {
-      if (chain && chain.species) {
-        evolutions.push(chain.species.name);
-        chain.evolves_to.forEach((evolution) => {
-          traverseChain(evolution);
-        });
-      }
-    };
+  const createEvolutions = (chain) => {
+    evolutions.push(chain.species.name);
+    evolutions.push(chain.evolves_to.species.name)
+    evolutions.push(chain.evolves_to.evolves_to.species.name)
+    setEvolutions(evolutions)
+  }
 
-    traverseChain(chain);
+  const displayEvolutions = (evolutions) => {
+    {/* chain.species.name 1er etat */}
+    {/* chain.evolves_to.species.name 2eme evolution */}
+    {/* chain.evolves_to.evolves_to.species.name  3eme evolution*/}
     return evolutions.join(" -> ");
   };
 
@@ -84,13 +93,18 @@ const PokemonDetails = ({ pokemonId }) => {
           pokeEvolStory.chain &&
           pokeEvolStory.chain.evolves_to.length > 0 ? (
             <p className="poke-evolution" >
-              <span >Evolutions:</span> {displayEvolutions(pokeEvolStory.chain)}
+              <span >Evolutions:</span> {displayEvolutions(evolutions)}
             </p>
           ) : (
             <p className="poke-evolution">
               There is no evolutions for this Pokemon
             </p>
           )}
+          {/* chain.species.name 1er etat */}
+          {/* chain.evolves_to.species.name 2eme evolution */}
+          {/* chain.evolves_to.evolves_to.species.name  3eme evolution*/}
+
+
 
           {pokemonData.game_indices.length > 0 ? (
             <p className="poke-version">
