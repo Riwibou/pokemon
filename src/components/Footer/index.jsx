@@ -1,9 +1,12 @@
-import './footer.css'
+import './footer.css';
 
-function Footer () {
+function Footer() {
   return (
-    <div className='footer'> website made by Riwibou </div>
-  )
+    <div className='footer'>
+      website made by <a href="https://github.com/Riwibou">
+      Riwibou <i className="fab fa-github"></i></a>
+    </div>
+  );
 }
 
-export default Footer
+export default Footer;

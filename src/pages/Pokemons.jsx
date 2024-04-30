@@ -6,6 +6,7 @@ import getTypeColor from "../utils/getTypeColor";
 const Pokemons = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchData = async () => {
     try {
@@ -29,6 +30,19 @@ const Pokemons = () => {
     fetchData();
   }, []);
 
+  // Function to handle search
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // Filter the data based on search query
+  const filteredData = data.filter((pokemon) => {
+    return (
+      pokemon.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (parseInt(searchQuery) && parseInt(searchQuery) )
+    );
+  });
+
   return loading ? (
     <div className="loader">
       <p>So much pokemons and types to load, please wait few seconds ... </p>
@@ -48,17 +62,24 @@ const Pokemons = () => {
     </div>
   ) : (
     <div className="pokemons-div">
-      <h1 className="pokemons-title" >Pokemons</h1>
-
+      <h1 className="pokemons-title">Pokemons</h1>
+      {/* Search bar */}
+      <input
+        className="search-bar"
+        type="text"
+        placeholder="Search a Pokemon"
+        value={searchQuery}
+        onChange={handleSearch}
+      />
       <div className="main-div">
-        {data.map((pokemon, index) => {
+        {filteredData.map((pokemon, index) => {
           const url = pokemon.url.split("/")[6];
           return (
             <Link to={`/pokemon/${pokemon.name}`} key={index} className="card">
-              <div className="">
-
+              <div className=""></div>
+              <div className="card-header">
+                {pokemon.name}{" "}
               </div>
-              <div className="card-header">{pokemon.name}</div>
               <div className="card-body">
                 <img
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
@@ -66,6 +87,7 @@ const Pokemons = () => {
                 />
               </div>
               <div className="card-footer">
+                <p></p>
                 <PokemonTypes url={`https://pokeapi.co/api/v2/pokemon/${url}`} />
               </div>
             </Link>
@@ -94,11 +116,16 @@ const PokemonTypes = ({ url }) => {
 
   return (
     <>
-    <div className={`card-footer ${types.length === 1 ? 'single-type' : ''}`}>
-      {types.map((type, index) => (
-        <span key={index} style={{ backgroundColor: getTypeColor(type), textShadow: "0 0 3px black" }}>{type} </span>
-      ))}
-    </div>
+      <div className={`card-footer ${types.length === 1 ? "single-type" : ""}`}>
+        {types.map((type, index) => (
+          <span
+            key={index}
+            style={{ backgroundColor: getTypeColor(type), textShadow: "0 0 3px black" }}
+          >
+            {type}{" "}
+          </span>
+        ))}
+      </div>
     </>
   );
 };
