@@ -67,7 +67,7 @@ const PokemonDetails = ({ pokemonId }) => {
     <div className="pokemon-infos-container">
       {pokemonData && (
         <div>
-          <h2 className="poke-name">{pokemonData.name}</h2>
+          <h2 className="poke-name">{pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h2>
           <img className="poke-img" src={pokemonData.sprites.front_default} alt="pokemon image" />
 
           <div className="type-flex">
@@ -75,7 +75,7 @@ const PokemonDetails = ({ pokemonId }) => {
             return (
               <Link
                 key={index}
-                className=""
+                className="btn-types"
                 style={{
                   backgroundColor: getTypeColor(typesTab.type.name),
                   color: "white",
@@ -109,7 +109,7 @@ const PokemonDetails = ({ pokemonId }) => {
           {pokemonData.game_indices.length > 0 ? (
             <p className="poke-version">
               Appear from the versions:{" "}
-              {pokemonData.game_indices[0].version.name}
+              <br /> {pokemonData.game_indices[0].version.name}
               {pokemonData.game_indices.length > 1 && (
                 <> and {pokemonData.game_indices[1].version.name}</>
               )}
@@ -122,7 +122,7 @@ const PokemonDetails = ({ pokemonId }) => {
             speciesData.flavor_text_entries &&
             speciesData.flavor_text_entries.length > 0 && (
               <p className="poke-story">
-                Story :{" "}
+                Story : <br /> {" "}
                 {speciesData.flavor_text_entries
                   .slice(1, 6)
                   .reduce((uniqueTexts, story) => {

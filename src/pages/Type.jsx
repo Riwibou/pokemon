@@ -39,9 +39,9 @@ const Type = () => {
   return loading ? (
     <div>Loading...</div>
   ) : (
-    <div>
+    <div className="type-container">
       <h1
-        className="color-type"
+        className="type-heading"
         style={{
           backgroundColor: getTypeColor(data.name),
           textShadow: "0 0 3px black"
@@ -49,27 +49,27 @@ const Type = () => {
       >
         ALL the {data.name} Pokemons
       </h1>
-      <button onClick={toggleSort}>
+      <button className="sort-button" onClick={toggleSort}>
         {sortBy === "alphabetical" ? "Sorted Alphabetically" : "Sorted by Pokedex order"}
       </button>
-      <div className="main-div">
+      <div className="pokemon-container">
         {sortedPokemon.map((pokemon, index) => (
-          <Link to={`/pokemon/${pokemon.pokemon.name}`} key={index}>
-            <div className="link-card">
+          <Link to={`/pokemon/${pokemon.pokemon.name}`} key={index} className="pokemon-link">
+            <div className="pokemon-card">
               <div
-                className="color-type"
+                className="pokemon-name"
                 style={{
                   backgroundColor: getTypeColor(data.name),
                   textShadow: "0 0 8px black",
-                  color: "white",
-                  textDecoration: "none"
+                  color: "white"
                 }}
               >
                 {pokemon.pokemon.name}
               </div>
               <img
+                className="pokemon-image"
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokemon.url.split("/")[6]}.png`}
-                alt=""
+                alt={pokemon.pokemon.name}
               />
             </div>
           </Link>

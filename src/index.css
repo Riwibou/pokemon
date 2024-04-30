@@ -159,33 +159,70 @@ h1 {
 
 /* Type page */
 
-.link-card {
-  text-decoration: none;
-  width: 140px;
-  height: 170px;
-  margin: 35px 25px 0px;
-  border: 2px solid #1b5486;
-  border-radius: 5px;
+.type-container {
   padding: 20px;
 }
 
-.link-card img {
-  height: 110px;
-  width: 110px;
+.type-heading {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
-.color-type {
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
+.sort-button {
   padding: 10px 20px;
+  border: none;
   border-radius: 5px;
-  text-align: center;
+  background-color: #2e68b3;
+  color: #ffcc00;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
 }
+
+.sort-button:hover {
+  background-color: #15255a;
+}
+
+.pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.pokemon-card {
+  width: 140px;
+  height: 170px;
+  padding: 20px;
+  border: 2px solid #1b5486;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pokemon-name {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.pokemon-image {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto;
+}
+
 
 /* Pokemon Page */
-
+/* Base styles for the container */
 .pokemon-infos-container {
   display: flex;
   flex-direction: column;
@@ -193,23 +230,56 @@ h1 {
   padding: 20px;
 }
 
+/* Style for the Pokemon link card */
 .poke-link-card {
   text-decoration: none;
-  width: 700px;
+  width: 90%;
+  max-width: 700px; /* Limit the maximum width */
   margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #1b5486;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Style for the Pokemon image */
+
+.poke-name {
+  font-size: 30px;
 }
 
 .poke-img {
-  height: 300px;
-  width: 300px;
-  border: 2px solid #1b5486;
+  height: auto; /* Allow the image to adjust its height */
+  width: 100%; /* Ensure the image fills its container */
+  max-width: 300px; /* Limit the maximum width */
+  border-radius: 8px;
+  margin-bottom: 30px;
 }
 
+.poke-evolution, .poke-version, .poke-story {
+  margin: 30px;
+}
+
+
+/* Style for the Pokemon numbers list */
 .poke-numbers ul {
   list-style-type: none;
   padding: 0;
+  margin-top: 20px; /* Add some space above the list */
 }
 
 .poke-numbers ul li {
-  text-decoration: none;
+  margin-bottom: 5px; /* Add space between list items */
+}
+
+/* Optional: Add hover effect to link cards */
+.poke-link-card:hover {
+  transform: translateY(-3px);
+  transition: transform 0.3s ease;
+}
+
+.btn-types {
+  margin: 20px;
+  padding: 10px 40px;
+  border-radius: 5px;
 }

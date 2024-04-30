@@ -31,7 +31,6 @@
   color: #ffcc00;
   background-color: #2e68b3;
   border-radius: 5px;
-  border: none;
   cursor: pointer;
   transition: background-color 0.15s ease;
   width: 130px;
@@ -68,7 +67,7 @@
 
   .right-header {
     flex-direction: column;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     gap: 0px;
     margin-bottom: 20px;
   }
