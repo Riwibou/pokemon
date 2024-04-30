@@ -136,7 +136,19 @@ const PokemonDetails = ({ pokemonId }) => {
             )}
 
           <div className="poke-charac">
-            <p>Habitat: {speciesData && speciesData.habitat.name}</p>
+
+          {speciesData ? (
+            <div>
+              <p>Habitat: {speciesData.habitat ? speciesData.habitat.name : "Unknown"}</p>
+            </div>
+            ) : (
+            <div>
+              <p>Habitat: Unknown</p>
+            </div>
+          )}
+
+
+
             <p>Weight: {pokemonData.weight / 10} kg</p>
             <p>Height: {pokemonData.height / 10} m</p>
           </div>
