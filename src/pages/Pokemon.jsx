@@ -9,7 +9,7 @@ const PokemonDetails = ({ pokemonId }) => {
   const [pokeEvolStory, setPokeEvolStory] = useState(null);
   const [loading, setLoading] = useState(true);
   const [evolutions, setEvolutions] = useState([]);
-  const [evolutionsDetails, setEvolutionsDetails] = useState([]); // New state for evolution details
+  const [evolutionsDetails, setEvolutionsDetails] = useState([]); 
   const [evolutionsImages, setEvolutionsImages] = useState([]);
 
   useEffect(() => {

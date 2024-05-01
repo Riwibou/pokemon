@@ -243,7 +243,6 @@ h1 {
 }
 
 /* Style for the Pokemon image */
-
 .poke-name {
   font-size: 30px;
 }
@@ -256,10 +255,15 @@ h1 {
   margin-bottom: 30px;
 }
 
-.poke-evolution, .poke-version, .poke-story {
+.poke-evolution,
+.poke-version,
+.poke-story {
   margin: 30px;
 }
 
+.poke-story {
+  /* make it fit in 350px of width */
+}
 
 /* Style for the Pokemon numbers list */
 .poke-numbers ul {
@@ -286,35 +290,99 @@ h1 {
 
 /* evolutions cards */
 .poke-evol-card {
-  text-decoration: none;
   width: 90%;
   max-width: 700px;
   margin: 50px auto;
   padding: 15px;
-  border: 2px solid #1b5486;
   border-radius: 8px;
   color: #fecb00;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .evolution-images {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center align images */
+  justify-content: center;
 }
 
 .evolution-card {
   width: 200px;
   margin: 10px;
   padding: 10px;
-  border: 1px solid #3037c1;
+  border: 2px solid #1b568d;
   border-radius: 5px;
   text-align: center;
   color: #fecb00;
 }
 
-.evolution-card h3 {
-  margin-top: 0;
-  font-size: 18px;
+.evolution-card:hover {
+  background-color: #171d31;
+  border: 2px solid #2373bc;
+}
 
+.evolution-card h3 {
+  margin-top: 5px;
+  font-size: 20px;
+  background-color: #2e68b3;
+  border-radius: 5px;
+}
+
+/* Responsive Styles */
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  /* Adjust the width and margin for small screens */
+  .poke-link-card {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .poke-img {
+    max-width: 100%;
+  }
+
+  .pokemon-infos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all content horizontally */
+    padding: 20px;
+  }
+
+  .poke-evol-card {
+    width: 90%;
+    max-width: 700px;
+    margin: 30px 0; /* Add margin between sections */
+    padding: 1px;
+    border-radius: 8px;
+    color: #fecb00;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .evolution-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .evolution-card {
+    width: 100%;
+    margin: 10px 0; /* Add space between cards */
+    padding: 10px;
+    border: 2px solid #1b568d;
+    border-radius: 5px;
+    text-align: center;
+    color: #fecb00;
+  }
+
+  .evolution-card:hover {
+    background-color: #171d31;
+    border: 2px solid #2373bc;
+  }
+
+  .evolution-card h3 {
+    margin-top: 5px;
+    font-size: 20px;
+    background-color: #2e68b3;
+    border-radius: 5px;
+  }
 }
