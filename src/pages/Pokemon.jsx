@@ -22,8 +22,9 @@ const PokemonDetails = ({ pokemonId }) => {
       .then((res) => res.json())
       .then((speciesData) => {
         setSpeciesData(speciesData);
+        return fetch(speciesData.evolution_chain.url)
       })
-      .then(() => fetch(speciesData.evolution_chain.url))
+
       .then((res) => res.json())
       .then((pokeEvolStory) => {
         createEvolutions(pokeEvolStory.chain);
@@ -46,17 +47,24 @@ const PokemonDetails = ({ pokemonId }) => {
 
 
   const createEvolutions = (chain) => {
-    evolutions.push(chain.species.name);
-    evolutions.push(chain.evolves_to.species.name)
-    evolutions.push(chain.evolves_to.evolves_to.species.name)
-    setEvolutions(evolutions)
-  }
+    if (chain.species) {
+      evolutions.push(chain.species.name);
+    }
+    if (chain.evolves_to && chain.evolves_to.species) {
+      evolutions.push(chain.evolves_to.species.name);
+    }
+    if (chain.evolves_to && chain.evolves_to.evolves_to && chain.evolves_to.evolves_to.species) {
+      evolutions.push(chain.evolves_to.evolves_to.species.name);
+    }
+    setEvolutions(evolutions);
+  };
 
   const displayEvolutions = (evolutions) => {
     {/* chain.species.name 1er etat */}
     {/* chain.evolves_to.species.name 2eme evolution */}
     {/* chain.evolves_to.evolves_to.species.name  3eme evolution*/}
-    return evolutions.join(" -> ");
+    return console.log( evolutions.join(" -> "));
+
   };
 
   if (loading) {
