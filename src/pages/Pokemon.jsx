@@ -8,8 +8,9 @@ const PokemonDetails = ({ pokemonId }) => {
   const [speciesData, setSpeciesData] = useState(null);
   const [pokeEvolStory, setPokeEvolStory] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [evolutions, setEvolutions] = useState([])
-  const evolutionsImages = []
+  const [evolutions, setEvolutions] = useState([]);
+  const [evolutionsDetails, setEvolutionsDetails] = useState([]); // New state for evolution details
+  const [evolutionsImages, setEvolutionsImages] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -18,26 +19,28 @@ const PokemonDetails = ({ pokemonId }) => {
       .then((res) => {
         setPokemonData(res);
       })
-      .then(() =>fetch (`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`))
+      .then(() => fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`))
       .then((res) => res.json())
       .then((speciesData) => {
         setSpeciesData(speciesData);
-        return fetch(speciesData.evolution_chain.url)
+        return fetch(speciesData.evolution_chain.url);
       })
-
       .then((res) => res.json())
       .then((pokeEvolStory) => {
-        createEvolutions(pokeEvolStory.chain);
-        setLoading(false);
+        const evolutions = createEvolutions(pokeEvolStory.chain);
+        setEvolutions(evolutions);
+        const evolutionDetailsPromises = evolutions.map(evolution =>
+          fetch(`https://pokeapi.co/api/v2/pokemon/${evolution}`).then(res =>
+            res.json()
+          )
+        );
+        return Promise.all(evolutionDetailsPromises);
       })
-      .then((evolutions) => {
-        evolutions.forEach((evolution) => {
-            fetch(`https://pokeapi.co/api/v2/pokemon/${evolution}`)
-            .then((res) => res.json())
-            .then((data) => {
-              evolutionsImages.push(data.sprites.front_default);
-            });
-        });
+      .then((evolutionDetails) => {
+        setEvolutionsDetails(evolutionDetails);
+        const images = evolutionDetails.map(data => data.sprites.front_default);
+        setEvolutionsImages(images);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Pokemon details:", error);
@@ -45,26 +48,26 @@ const PokemonDetails = ({ pokemonId }) => {
       });
   }, [pokemonId]);
 
-
   const createEvolutions = (chain) => {
-    if (chain.species) {
-      evolutions.push(chain.species.name);
-    }
-    if (chain.evolves_to && chain.evolves_to.species) {
-      evolutions.push(chain.evolves_to.species.name);
-    }
-    if (chain.evolves_to && chain.evolves_to.evolves_to && chain.evolves_to.evolves_to.species) {
-      evolutions.push(chain.evolves_to.evolves_to.species.name);
-    }
-    setEvolutions(evolutions);
+    const newEvolutions = [];
+
+    const traverseChain = (currentChain) => {
+      if (currentChain.species) {
+        newEvolutions.push(currentChain.species.name);
+      }
+      if (currentChain.evolves_to) {
+        currentChain.evolves_to.forEach((evolution) => {
+          traverseChain(evolution);
+        });
+      }
+    };
+
+    traverseChain(chain);
+    return newEvolutions;
   };
 
   const displayEvolutions = (evolutions) => {
-    {/* chain.species.name 1er etat */}
-    {/* chain.evolves_to.species.name 2eme evolution */}
-    {/* chain.evolves_to.evolves_to.species.name  3eme evolution*/}
-    return console.log( evolutions.join(" -> "));
-
+    return evolutions.join(" -> ");
   };
 
   if (loading) {
@@ -79,40 +82,48 @@ const PokemonDetails = ({ pokemonId }) => {
           <img className="poke-img" src={pokemonData.sprites.front_default} alt="pokemon image" />
 
           <div className="type-flex">
-          {pokemonData.types.map((typesTab, index) => {
-            return (
-              <Link
-                key={index}
-                className="btn-types"
-                style={{
-                  backgroundColor: getTypeColor(typesTab.type.name),
-                  color: "white",
-                  textShadow: "0 0 3px black"
+            {pokemonData.types.map((typesTab, index) => {
+              return (
+                <Link
+                  key={index}
+                  className="btn-types"
+                  style={{
+                    backgroundColor: getTypeColor(typesTab.type.name),
+                    color: "white",
+                    textShadow: "0 0 3px black"
                   }}
-                to={`/type/${typesTab.type.name}`}
-              >
-                {typesTab.type.name}
-              </Link>
-            );
-          })}
-        </div>
+                  to={`/type/${typesTab.type.name}`}
+                >
+                  {typesTab.type.name}
+                </Link>
+              );
+            })}
+          </div>
 
-          {pokeEvolStory &&
-          pokeEvolStory.chain &&
-          pokeEvolStory.chain.evolves_to.length > 0 ? (
-            <p className="poke-evolution" >
-              <span >Evolutions:</span> {displayEvolutions(evolutions)}
-            </p>
-          ) : (
-            <p className="poke-evolution">
-              There is no evolutions for this Pokemon
-            </p>
-          )}
-          {/* chain.species.name 1er etat */}
-          {/* chain.evolves_to.species.name 2eme evolution */}
-          {/* chain.evolves_to.evolves_to.species.name  3eme evolution*/}
+          <div className="poke-evol-card">
+            {evolutions.length > 0 ? (
+              <p className="poke-evolution">
+                <h3>Evolutions:</h3>
+              </p>
+            ) : (
+              <p className="poke-evolution">
+                There are no evolutions for this Pokemon
+              </p>
+            )}
 
-
+            {evolutionsImages.length > 0 && (
+              <div className="evolution-images">
+                {evolutionsDetails.map((detail, index) => (
+                  <Link key={index} to={`/pokemon/${evolutions[index]}`}>
+                    <div className="evolution-card">
+                      <h3>{detail.name}</h3>
+                      <img src={evolutionsImages[index]} alt={`Evolution ${index + 1}`} />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
 
           {pokemonData.game_indices.length > 0 ? (
             <p className="poke-version">
@@ -200,10 +211,11 @@ const Pokemon = () => {
         const response = await axios.get(
           `https://pokeapi.co/api/v2/pokemon/${name}`
         );
+        // console.log("Fetched Pokemon Details Response:", response.data);
         setData(response.data);
         setLoading(false);
       } catch (error) {
-        console.log(error.response);
+        // console.log("Error fetching Pokemon details:", error.response);
         setLoading(false);
       }
     };
@@ -215,7 +227,7 @@ const Pokemon = () => {
     <div>Loading...</div>
   ) : (
     <div>
-          <PokemonDetails pokemonId={data.id} />
+      <PokemonDetails pokemonId={data.id} />
     </div>
   );
 };
